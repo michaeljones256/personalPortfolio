@@ -1,9 +1,7 @@
 from django.db import models
 
 
-# Create your models here.
-class Job(models.Model):
-
+class Project(models.Model):
     # images
     # image of type imagefield accepts types of photos, puts it into a file called images 
     image = models.ImageField(upload_to='images/')
@@ -14,8 +12,10 @@ class Job(models.Model):
     # discription
     # when pressing on the links
     description = models.CharField(max_length=10000, default='defualt')
+
+    # github link
+    glink = models.CharField(max_length=200, default='defualt')
+    
     def __str__(self):
         return self.summary
 
-   
-  

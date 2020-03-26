@@ -46,46 +46,36 @@
   <body>
 
 <main role="main">
-
+  <!-- 
   <section class="jumbotron text-center">
     <div class="container">
       <h1>Michael Jones </h1>
-      <p class="lead text-muted"> Sophomore Computer Science Major at Syracuse University looking to learn and advance in the field of software development. </p>
+      <p class="lead text-muted"> Sophomore Computer Science Major at Syracuse University looking learn and advance in the field of software development. </p>
       <p>
         <a href="mailto:mwjones@syr.edu" class="btn btn-primary my-2">Email Me</a>
       </p>
-      <!-- Picture of myself-->
-      <!--<img src="{% static 'IMG_2873.jpg' %}" height=300></img>-->
-        
-        <div class="row">
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <div class="column">
-            <img src="{% static 'DSC_0616.JPG' %}" class="rounded float-left" height=300 >
-          </div>
-          &nbsp;&nbsp;
-          <div class="column">
-            <img src="{% static 'IMG_2873.jpg' %}" class="rounded float-right" height=300 >
-          </div>
-          <div class="column">
-            &nbsp;&nbsp;
-            <img src="{% static '016.JPG' %}" class="rounded float-right" height=300 >
-          </div>
-          
-        </div>
-      <!---->
+      #Picture of myself#
+      <img src="{% static 'IMG_2873.jpg' %}" height=300></img>
     </div>
-  </section>
+  </section>-->
+
+
+
+  <center><h1 style="color:grey;">Project Menu</h1></center>
+  <center><a href= "{% url 'home' %}" class="btn btn-primary my-2">Back to Home</a></center>
 
   <div class="album py-5 bg-light">
     <div class="container">
-
+      
       <div class="row">
+        {% for project in projects.all %}
         <div class="col-md-4">
-          <a href="{% url 'homejob' %}"> 
-          <div class="card mb-4 box-shadow">
-            <img class= "card=img-top" src="{% static 'cartoon.jpg' %}" width="100%" height="225">
+          <!-- cant just say url 'detail' because there is a job_id int needed in the pattern-->
+          <a href="{% url 'pdetail' project.id%}"> 
+          <div class="card mb-4 shadow-sm">
+            <img class= "card=img-top" src="{{project.image.url}}" width="100%" height="225">
             <div class="card-body">
-              <p1 class="card-text">Jobs!</p1>
+              <p class="card-text"> {{project.summary}} </p>
               <!-- for butons if you need-->
               <!--
               <div class="d-flex justify-content-between align-items-center">
@@ -97,28 +87,14 @@
               </div>-->
             </div>
           </div>
+          <a>
         </div>
-        <div class="col-md-4">
-          <a href="{% url 'homeproj' %}"> 
-          <div class="card mb-4 box-shadow">
-            <img class= "card=img-top" src="{% static '1code1.png' %}" width="100%" height="225">
-            <div class="card-body">
-              <p class="card-text">Projects!</p>
-              <!-- for butons if you need-->
-              <!--
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>-->
-            </div>
-          </div>
-        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 
-
- 
+</main>
 
 <!-- script tags pointing to local static files-->
 <script src="{% static 'jquery-3.4.1.min.js' %}" ></script>

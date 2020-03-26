@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <!-- be ready for static files program -->
@@ -50,19 +49,18 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1>{{job.summary}}</h1>
+      <h1>{{project.summary}}</h1>
       <!--<p class="lead text-muted"> {{job.description}} </p>-->
       <p>
         <!-- This is why there is names for given urls becayse when we say 'url 'home'' 
         it is referencing the link the urls.py-->
-        <a href="{% url 'homejob' %}" class="btn btn-primary my-2">Back to Jobs</a>
+        <a href="{% url 'homeproj' %}" class="btn btn-primary my-2">Back to Projects</a>
       </p>
       <!-- Picture of job-->
-      <img src="{{ job.image.url }}" height=300></img>
-      &nbsp;&nbsp;&nbsp;
-      <p class="lead text-muted"> {{job.description}} </p>
+      <img src="{{ project.image.url }}" height=300></img>
+      <p class="lead text-muted"> {{project.description}} </p>
     </div>
-    
+    <a href= "{{project.glink}}" class="btn btn-primary my-2">Github</a>
   </section>
 
 </main>

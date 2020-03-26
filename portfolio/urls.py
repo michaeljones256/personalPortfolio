@@ -13,10 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path
 import jobs.views
-#for static 
+import projects.views
+# for static 
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,16 +27,22 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # is sent to the correspoding folder, jobs.view.home
     path('', jobs.views.home, name='home'),
+    path('jobs/', jobs.views.homejob, name='homejob'),
+    path('projects/', projects.views.homeproj, name='homeproj'),
+
+
     # this path, they input a number after and it is stored as job_id
     # and this goes to jobs.view.detail, and the name is detail for this 
-    path('jobs/<int:job_id>', jobs.views.detail, name='detail')
+    path('jobs/<int:job_id>', jobs.views.detail, name='detail'),
+
+    path('projects/<int:proj_id>', projects.views.projdetail, name='pdetail')
     
 ] 
-#this below is all adding paths when using static files and media files in this case 
+# this below is all adding paths when using static files and media files in this case 
 
 # things you want to use when showing static files^^
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-#upload the image that corresponds to the summary
+# upload the image that corresponds to the summary
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
